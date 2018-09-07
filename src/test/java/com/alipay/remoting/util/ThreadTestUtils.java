@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -16,27 +16,18 @@
  */
 package com.alipay.remoting.util;
 
-import java.util.BitSet;
-
-/**
- * switch interface
+/** 
+ * utils of thread operations
  *
- * @author tsui
- * @version $Id: Switch.java, v 0.1 2018-04-08 11:26 tsui Exp $
+ * @author tsui  
+ * @version $Id: ThreadTestUtils.java, v 0.1 2018-05-29 15:29 tsui Exp $$  
  */
-public interface Switch {
-    /**
-     * api for user to turn on a feature
-     *
-     * @param index the switch index of feature
-     */
-    void turnOn(int index);
-
-    /**
-     * check switch whether on
-     *
-     * @param index
-     * @return true if either system setting is on or user setting is on
-     */
-    boolean isOn(int index);
+public class ThreadTestUtils {
+    public static void sleep(long duration) {
+        try {
+            Thread.sleep(duration);
+        } catch (InterruptedException e) {
+            //ignore
+        }
+    }
 }

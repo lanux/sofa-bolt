@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -248,7 +248,7 @@ public class DefaultInvokeFuture implements InvokeFuture {
                 CommandHandler commandHandler = protocol.getCommandHandler();
                 if (null != commandHandler) {
                     ExecutorService executor = commandHandler.getDefaultExecutor();
-                    if (null != executor)
+                    if (null != executor) {
                         executor.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -269,6 +269,7 @@ public class DefaultInvokeFuture implements InvokeFuture {
                                 }
                             }
                         });
+                    }
                 } else {
                     logger.error("Executor null in commandHandler of protocolCode [{}].",
                         this.protocol);

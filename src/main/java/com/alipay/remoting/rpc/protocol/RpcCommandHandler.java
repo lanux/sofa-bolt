@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -151,8 +151,8 @@ public class RpcCommandHandler implements CommandHandler {
             RequestCommand cmd = (RequestCommand) msg;
             if (cmd.getType() != RpcCommandType.REQUEST_ONEWAY) {
                 if (t instanceof RejectedExecutionException) {
-                    final ResponseCommand response = (ResponseCommand) this.commandFactory
-                        .createExceptionResponse(id, ResponseStatus.SERVER_THREADPOOL_BUSY);
+                    final ResponseCommand response = this.commandFactory.createExceptionResponse(
+                        id, ResponseStatus.SERVER_THREADPOOL_BUSY);
                     // RejectedExecutionException here assures no response has been sent back
                     // Other exceptions should be processed where exception was caught, because here we don't known whether ack had been sent back.  
                     ctx.getChannelContext().writeAndFlush(response)
